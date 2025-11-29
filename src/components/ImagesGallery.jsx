@@ -29,6 +29,10 @@ const ImagesGallery = ({ onContainerReady }) => {
 
     // Entregamos el contenedor al componente WebGL
     onContainerReady(container);
+    return () => {
+      // limpiar DOM si el componente se desmonta
+      container.innerHTML = "";
+    };
   }, []);
   return (
     <div className="viewport">
