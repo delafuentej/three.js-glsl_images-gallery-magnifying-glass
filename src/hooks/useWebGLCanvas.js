@@ -92,11 +92,45 @@ export function useWebGLCanvas(container) {
       if (iChannel0Loc) gl.uniform1i(iChannel0Loc, 0);
 
       // render loop
+      // function loop() {
+      //    if (!mounted) return;
+      //SIEMPRE actualizar el mouse al inicio
+      // const m = mouse.update();
+
+      // const w = window.innerWidth;
+      // const h = window.innerHeight;
+
+      // if (canvas.width !== w || canvas.height !== h) {
+      // canvas.width = w;
+      // canvas.height = h;
+      // gl.viewport(0, 0, w, h);
+      // }
+
+      //
+
+      // try {
+      // updateTexture(gl, container, texture);
+      // } catch (err) {
+      // console.error("[useWebGLCanvas] updateTexture error:", err);
+      // }
+
+      // const resLoc = gl.getUniformLocation(program, "iResolution");
+      // if (resLoc) gl.uniform2f(resLoc, w, h);
+
+      // const mouseLoc = gl.getUniformLocation(program, "iMouse");
+      // if (mouseLoc) gl.uniform2f(mouseLoc, m.x, h - m.y);
+
+      // gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      // rafRef.current = requestAnimationFrame(loop);
+      // }
+
       function loop() {
         if (!mounted) return;
 
+        // SIEMPRE actualizar el mouse al inicio
         const m = mouse.update();
-
+        // 2) actualizar tamaño del canvas
         const w = window.innerWidth;
         const h = window.innerHeight;
 
@@ -105,19 +139,13 @@ export function useWebGLCanvas(container) {
           canvas.height = h;
           gl.viewport(0, 0, w, h);
         }
+        // 3) actualizar textura ANTES de los uniforms
+        updateTexture(gl, container, texture);
 
-        try {
-          updateTexture(gl, container, texture);
-        } catch (err) {
-          console.error("[useWebGLCanvas] updateTexture error:", err);
-        }
-
-        const resLoc = gl.getUniformLocation(program, "iResolution");
-        if (resLoc) gl.uniform2f(resLoc, w, h);
-
-        const mouseLoc = gl.getUniformLocation(program, "iMouse");
-        if (mouseLoc) gl.uniform2f(mouseLoc, m.x, h - m.y);
-
+        // uniforms// 4) pasar los uniforms
+        gl.uniform2f(gl.getUniformLocation(program, "iResolution"), w, h);
+        gl.uniform2f(gl.getUniformLocation(program, "iMouse"), m.x, h - m.y);
+        // 5) dibujar
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
         rafRef.current = requestAnimationFrame(loop);

@@ -22,5 +22,5 @@ export function useMouse() {
     return pos.current;
   }
 
-  return { update, pos };
+  return { update };
 }
