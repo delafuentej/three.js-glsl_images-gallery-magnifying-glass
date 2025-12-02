@@ -11,6 +11,7 @@ A WebGL-powered magnifying glass follows the cursor, creating a **zoomed, distor
   - Zoom and distortion
   - Chromatic aberration effect
 - **Smooth camera pan** following mouse movement.
+- Source Images: unsplash.com
 
 ---
 
