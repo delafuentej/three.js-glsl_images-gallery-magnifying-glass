@@ -16,7 +16,7 @@ A WebGL-powered magnifying glass follows the cursor, creating a **zoomed, distor
 
 ## 📸 Demo
 
-**🌐 Live Demo:** [fake-3d-images-gallery](https://react-glsl-images-gallery-magnifyin.vercel.app/)
+**🌐 Live Demo:** [image-gallery-magnifying-glass-effect](https://react-glsl-images-gallery-magnifyin.vercel.app/)
 
 <p align="center" width="100%">
 <img src="public/images/app/app1.png" width="45%" />
@@ -70,6 +70,32 @@ A WebGL-powered magnifying glass follows the cursor, creating a **zoomed, distor
 - RAF cleanup: All requestAnimationFrame loops and event listeners are properly cleaned up to avoid memory leaks.
 
 ---
+
+## 🛠️ Technologies Used
+
+This project leverages a modern JavaScript toolchain built for high-performance web applications, real-time GLSL rendering, and efficient image processing.
+
+### Frontend
+
+-**React 19** — UI library used to build dynamic and reactive components.
+
+- **React DOM 19** — Integrates React with the browser DOM for rendering.
+
+-**Vite** — Next-generation frontend tooling providing ultra-fast bundling and HMR.
+
+- **@vitejs/plugin-react** — Enables optimized React support in Vite.
+
+### Graphics & Rendering
+
+- **vite-plugin-glsl** — Allows importing GLSL shader files directly into JavaScript/React, enabling custom visual effects such as chromatic aberration and image distortions.
+
+### Image Processing
+
+-**_Sharp_** — High-performance image processing library used for transformations, optimizations, and generating efficient output images.
+
+### Performance & Loading
+
+-**vite-plugin-preload** — Preloads assets for improved performance and faster render times.
 
 ## 📦 Installation
 
